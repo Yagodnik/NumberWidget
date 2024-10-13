@@ -29,8 +29,7 @@ public class IntegerTokenListener implements EditorMouseMotionListener, EditorMo
         if (project == null) return;
 
         if (popup != null) {
-            // TODO: Fix this check
-            if (popup.point.distance(position) > 200) {
+            if (!popup.isInside(position)) {
                 popup.cancel();
                 popup = null;
             } else {

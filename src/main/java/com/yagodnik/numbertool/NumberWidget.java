@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 public class NumberWidget {
     final public JPanel root = new JPanel();
 
+    final public int thresholdMargin = 20;
+
     final public JBPopup popup;
     final public Point point;
 
@@ -85,6 +87,21 @@ public class NumberWidget {
         decimalValueLabel.setText(decimal);
         hexValueLabel.setText(hex);
         binaryValueLabel.setText(binary);
+    }
+
+    public boolean isInside(Point p) {
+        Dimension size = popup.getSize();
+
+        System.out.println(size.width + "x" + size.height);
+
+        Rectangle bounds = new Rectangle(
+            point.x - thresholdMargin,
+            point.y - thresholdMargin,
+            size.width + 2 * thresholdMargin,
+            size.height + 2 * thresholdMargin
+        );
+
+        return bounds.contains(p);
     }
 
     public void show(Editor editor) {
