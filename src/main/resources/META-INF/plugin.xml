@@ -3,7 +3,7 @@
 
     <name>Ineditor Number Converter</name>
 
-    <vendor email="YagodnikDev@yandex.ru" url="https://www.yourcompany.com">Yagodnik</vendor>
+    <vendor email="YagodnikDev@yandex.ru" url="https://github.com/Yagodnik/NumberWidget/">Yagodnik</vendor>
 
     <description>Small widget which will help to easily convert numbers during coding</description>
 

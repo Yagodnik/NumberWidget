@@ -26,7 +26,9 @@ public class IntegerTokenListener implements EditorMouseMotionListener, EditorMo
         Project project = editor.getProject();
         Point position = e.getMouseEvent().getPoint();
 
-        if (project == null) return;
+        if (project == null) {
+            return;
+        }
 
         if (popup != null) {
             if (!popup.isInside(position)) {
@@ -37,7 +39,12 @@ public class IntegerTokenListener implements EditorMouseMotionListener, EditorMo
             }
         }
 
-        PsiFile psiFile = PsiDocumentManager.getInstance(project).getPsiFile(editor.getDocument());
+        PsiDocumentManager instance = PsiDocumentManager.getInstance(project);
+        if (instance == null) {
+            return;
+        }
+
+        PsiFile psiFile = instance.getPsiFile(editor.getDocument());
         LogicalPosition logicalPosition = e.getLogicalPosition();
         int offset = editor.logicalPositionToOffset(logicalPosition);
 
@@ -46,6 +53,10 @@ public class IntegerTokenListener implements EditorMouseMotionListener, EditorMo
 
             if (element != null) {
                 IElementType tokenType = element.getNode().getElementType();
+
+                if (tokenType == null) {
+                    return;
+                }
 
                 boolean hoveringOverInteger = tokenType.toString().contains("INTEGER_LITERAL");
 

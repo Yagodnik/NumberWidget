@@ -90,6 +90,10 @@ public class NumberWidget {
     }
 
     public boolean isInside(Point p) {
+        if (popup == null) {
+            return false;
+        }
+
         Dimension size = popup.getSize();
 
         System.out.println(size.width + "x" + size.height);
@@ -105,11 +109,18 @@ public class NumberWidget {
     }
 
     public void show(Editor editor) {
-        popup.show(new RelativePoint(editor.getContentComponent(), point));
+        if (popup == null) {
+            return;
+        }
 
+        popup.show(new RelativePoint(editor.getContentComponent(), point));
     }
 
     public void cancel() {
+        if (popup == null) {
+            return;
+        }
+
         popup.cancel();
     }
 }
