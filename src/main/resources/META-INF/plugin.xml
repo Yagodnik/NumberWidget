@@ -1,0 +1,15 @@
+<idea-plugin>
+    <id>com.example.demo</id>
+
+    <name>Ineditor Number Converter</name>
+
+    <vendor email="YagodnikDev@yandex.ru" url="https://www.yourcompany.com">Yagodnik</vendor>
+
+    <description>Small widget which will help to easily convert numbers during coding</description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <editorFactoryListener implementation="com.yagodnik.numbertool.PluginEditorFactoryListener" />
+    </extensions>
+</idea-plugin>
