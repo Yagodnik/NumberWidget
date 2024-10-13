@@ -96,7 +96,9 @@ public class NumberWidget {
 
         Dimension size = popup.getSize();
 
-        System.out.println(size.width + "x" + size.height);
+        if (size == null) {
+            return false;
+        }
 
         Rectangle bounds = new Rectangle(
             point.x - thresholdMargin,
