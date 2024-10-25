@@ -11,10 +11,19 @@ public class NumberConverter {
         }
 
         return Long.parseLong(
-                numberString.replace("0x", "")
-                            .replace("0b", ""),
-                base
+            format(numberString),
+            base
         );
+    }
+
+    private static String format(String numberString) {
+        return numberString
+                .replace("0x", "")
+                .replace("0b", "")
+                .replace("U", "")
+                .replace("u", "")
+                .replace("L", "")
+                .replace("l", "");
     }
 
     public static String toDecimal(String numberString) {

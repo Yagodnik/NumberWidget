@@ -2,6 +2,7 @@ package com.yagodnik.numbertool;
 
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.LogicalPosition;
+import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.editor.event.EditorMouseListener;
 import com.intellij.openapi.editor.event.EditorMouseMotionListener;
 import com.intellij.openapi.editor.event.EditorMouseEvent;
@@ -25,6 +26,11 @@ public class IntegerTokenListener implements EditorMouseMotionListener, EditorMo
         Editor editor = e.getEditor();
         Project project = editor.getProject();
         Point position = e.getMouseEvent().getPoint();
+        SelectionModel selectionModel = editor.getSelectionModel();
+
+        if (selectionModel.hasSelection()) {
+            return;
+        }
 
         if (project == null) {
             return;
